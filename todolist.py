@@ -1,10 +1,15 @@
-def tambah_tugas(tugas):
-	tugas1 = input("tambahkan tugas: ")
-	tugas.append(tugas1)
+tugas = []
+def tambah_tugas(tugas1):
+	tugas2 = input("tambahkan tugas: ")
+	tugas1.append(tugas2)
+	print("tugas berhasil di tambahkan")
 
-def hapus_tugas(tugas):
-	hapus = input("pilih tugas: ")
-	tugas.pop(hapus)
+def hapus_tugas(tugas1):
+	for daftar in tugas1:
+		print(daftar)
+		data = input("pilih nomor yang ingin dihapus: ")
+		print("tugas berhasil di hapus")
+		
 
 def lihat_tugas():
 	tugas = []
@@ -21,7 +26,6 @@ def main():
 
 
 while True:
-	tugas = []
 	main()
 	pilihan = int(input("pilih no berapa: "))
 	if pilihan > 4:
@@ -29,9 +33,9 @@ while True:
 	elif pilihan == 1:
 		tambah_tugas(tugas)
 	elif pilihan == 2:
-		hapus_tugas()
+		hapus_tugas(tugas)
 	elif pilihan == 3:
-		lihat_tugas()
+		lihat_tugas(tugas)
 	elif pilihan ==4:
 		break
 	else:
