@@ -33,22 +33,26 @@ def main():
 
 while True:
 	main()
-	pilihan = int(input("silahkan pilih: "))
-	if pilihan > 5:
-		print("angka tidak valid")
-		tanya = input("Enter untuk lanjut..")
-	elif pilihan == 1:
-		penjumlahan()
-		tanya = input("Enter untuk lanjut..")
-	elif pilihan == 2:
-		pengurangan()
-		tanya = input("Enter untuk lanjut..")
-	elif pilihan == 3:
-		perkalian()
-		tanya = input("Enter untuk lanjut..")
-	elif pilihan == 4:
-		pembagian()
-		tanya = input("Enter untuk lanjut..")
-	elif pilihan == 5:
-		print("program selesai")
-		break
+	try:
+		pilihan = int(input("silahkan pilih: "))
+		if pilihan > 5:
+			print("angka tidak valid")
+			tanya = input("Enter untuk lanjut..")
+		elif pilihan == 1:
+			penjumlahan()
+			tanya = input("Enter untuk lanjut..")
+		elif pilihan == 2:
+			pengurangan()
+			tanya = input("Enter untuk lanjut..")
+		elif pilihan == 3:
+			perkalian()
+			tanya = input("Enter untuk lanjut..")
+		elif pilihan == 4:
+			pembagian()
+			tanya = input("Enter untuk lanjut..")
+		elif pilihan == 5:
+			print("program selesai")
+			break
+	except ValueError:
+		print("tidak valid, harus memasukkan angka!")
+
