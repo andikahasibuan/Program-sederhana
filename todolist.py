@@ -13,9 +13,9 @@ def hapus_tugas(tugas1):
 		
 
 def lihat_tugas(tugas1):
-	for daftar in tugas1:
-		print(daftar)
-		lanjut = input("tekan enter untuk kembali")
+	for nomor, daftar in enumerate(tugas1):
+		print(f"{nomor + 1}. {daftar}")
+	lanjut = input("tekan enter untuk kembali")
 
 
 def main():
@@ -28,7 +28,7 @@ def main():
 
 while True:
 	main()
-	pilihan = int(input("pilih no berapa: "))
+	pilihan = int(input("silahkan pilih nommor yang ada di menu: "))
 	if pilihan > 4:
 		print("nomor tidak valid")
 	elif pilihan == 1:
