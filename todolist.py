@@ -2,26 +2,27 @@ tugas = []
 def tambah_tugas(tugas1):
 	tugas2 = input("tambahkan tugas: ")
 	tugas1.append(tugas2)
-	print("tugas berhasil di tambahkan")
+	lanjut = input("tekan enter untuk lanjut")
+	print("tugas berhasil di tambahkan!")
 
 def hapus_tugas(tugas1):
 	for daftar in tugas1:
 		print(daftar)
 		data = input("pilih nomor yang ingin dihapus: ")
-		print("tugas berhasil di hapus")
+		print("tugas berhasil di hapus!")
 		
 
-def lihat_tugas():
-	tugas = []
-	for i in tugas:
-		print(i)
+def lihat_tugas(tugas1):
+	for daftar in tugas1:
+		print(daftar)
+		lanjut = input("tekan enter untuk kembali")
 
 
 def main():
-	print("===todo-list===")
+	print("===to-do list===")
 	print("1. tambah tugas")
 	print("2. hapus tugas")
-	print("3. lihat tugas")
+	print("3. lihat semua tugas")
 	print("4 keluar")
 
 
