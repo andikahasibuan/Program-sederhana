@@ -19,7 +19,7 @@ def perkalian():
 def pembagian():
 	a = int(input("masukkan angka: "))
 	b = int(input("di bagi: "))
-	hasil = a % b
+	hasil = int(a / b)
 	print(f"hasil: {hasil} ")
 
 
