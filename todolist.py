@@ -6,10 +6,11 @@ def tambah_tugas(tugas1):
 	print("tugas berhasil di tambahkan!")
 
 def hapus_tugas(tugas1):
-	for daftar in tugas1:
-		print(daftar)
-		data = input("pilih nomor yang ingin dihapus: ")
-		print("tugas berhasil di hapus!")
+	for nomor, daftar in enumerate(tugas1):
+		print(f"{nomor + 1}. {daftar}")
+	data = int(input("pilih nomor yang ingin dihapus: ")) - 1
+	tugas1.pop(data)
+	print("Tugas berhasil dihapus!")
 		
 
 def lihat_tugas(tugas1):
