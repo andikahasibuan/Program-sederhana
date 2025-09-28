@@ -20,9 +20,18 @@ def hapus_tugas(tugas1):
 		
 
 def lihat_tugas(tugas1):
-	print("==Daftar tugas anda==")
-	for nomor, daftar in enumerate(tugas1):
-		print(f"{nomor + 1}. {daftar}")
+	while True:
+		print("==Daftar tugas anda==")
+		for nomor, daftar in enumerate(tugas1):
+			print(f"{nomor + 1}. {daftar}")
+		pilihan = input("Ketik q untuk kembali ke menu:")
+		if pilihan != "q":
+			print("Anda tidak mengetik q!")
+			time.sleep(1)
+		else:
+			time.sleep(1)
+			print("Anda kembali ke menu!")
+			break
 
 def keluar():
 	print("Program akan dihentikan dalam..")
