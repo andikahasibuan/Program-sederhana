@@ -7,30 +7,44 @@ def tambah_tugas(tugas1):
 	time.sleep(1)
 
 def hapus_tugas(tugas1):
-	print("==Daftar tugas anda==")
-	for nomor, daftar in enumerate(tugas1):
-		print(f"{nomor + 1}. {daftar}")
-	data = int(input("Silahkan pilih tugas yang ingin dihapus: ")) - 1
-	if data > nomor:
-		print("Nomor yang anda masukkan tidak valid!")
+	if tugas1 == []:
+		print("==Daftar tugas anda==")
+		print("Anda tidak memiliki tugas yang bisa di hapus untuk saat ini.")
 	else:
-		tugas1.pop(data)
-		print(f"Tugas nomor {data + 1} berhasil dihapus!")
-		time.sleep(1)
-		
-
-def lihat_tugas(tugas1):
-	while True:
 		print("==Daftar tugas anda==")
 		for nomor, daftar in enumerate(tugas1):
 			print(f"{nomor + 1}. {daftar}")
-		pilihan = input("Ketik q untuk kembali ke menu:")
+		data = int(input("Silahkan pilih tugas yang ingin dihapus: ")) -1
+		if data > nomor:
+			print("Nomor yang anda masukkan tidak valid!")
+		else :
+			tugas1.pop(data)
+			print(f"Tugas nomor {data + 1} berhasil dihapus!")
+	while True:
+		pilihan = input("Ketik q untuk kembali: ")
 		if pilihan != "q":
 			print("Anda tidak mengetik q!")
 			time.sleep(1)
 		else:
+			print("Anda kembali ke menu utama!")
 			time.sleep(1)
-			print("Anda kembali ke menu!")
+			break
+		
+
+def lihat_tugas(tugas1):
+	print("==Daftar tugas anda==")
+	for nomor, daftar in enumerate(tugas1):
+		print(f"{nomor + 1}. {daftar}")
+	if tugas1 == []:
+		print("Anda belum memiliki tugas untuk saat ini.")
+	while True:
+		pilihan = input("Ketik q untuk kembali: ")
+		if pilihan != "q":
+			print("Anda tidak mengetik q!")
+			time.sleep(1)
+		else:
+			print("Anda kembali ke menu utama!")
+			time.sleep(1)
 			break
 
 def keluar():
