@@ -22,7 +22,7 @@ def main():
 while True:
 	main()
 	pilihan = int(input("Silahkan pilih: "))
-	if pilihan  == 0 and pilihan > 2:
+	if pilihan > 2:
 		print("Angka yang anda masukkan tidak valid!")
 	elif pilihan == 1:
 		tebak_angka()
