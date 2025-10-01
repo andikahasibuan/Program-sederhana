@@ -8,14 +8,14 @@ def tebak_angka():
 		if pilihan > 5 or pilihan == 0:
 			print("Anda hanya boleh menebak dari angka 1-5!")
 		elif pilihan != angka_random:
-			print("Anda salah menebak angka!")
+			print("Anda salah menebak angka!, angka yang benar adalah: ", + angka_random)
 		else:
 			print("Selamat anda berhasil menebak dengan benar!")
 	except:
 		print("Anda hanya bisa memasukkan angka!")
 
 def keluar():
-	print("Program akan dihentikan dalam")
+	print("Anda akan keluar dalam")
 	time.sleep(1)
 	print("3")
 	time.sleep(1)
@@ -23,8 +23,9 @@ def keluar():
 	time.sleep(1)
 	print("1")
 	time.sleep(1)
-	print("Program dihentikan.")
-	print("Terima kasih sudah bermain")
+	print("Anda keluar dari permainan.")
+	time.sleep(1)
+	print("Terima kasih sudah bermain!")
 
 
 def main():
