@@ -1,11 +1,14 @@
+from datetime import datetime
 transaksi = []
 
 def tambah_transaksi(transaksi):
 	print("Contoh YY-MM--DD")
-	tanggal = input("Masukkan tanggal:")
+	tanggal =input("Masukkan tanggal:")
+	tanggal1 = datetime.strptime(tanggal, "%Y-%m-%d").date()
 	jumlah = int(input("Masukkan jumlah: "))
-	keterangan = input("Masukkan keterangan: ")
-	transaksi.append(f"({tanggal}) Rp{jumlah} keterangan: {keterangan}")
+	kategori = input("Masukkan kategori: ")
+	catatan = input("Masukkan keterangan: ")
+	transaksi.append(f"({tanggal1}) Rp{jumlah} - {kategori} ({catatan})")
 	print("Transaksi anda berhasil ditambahkan!")
 		
 
