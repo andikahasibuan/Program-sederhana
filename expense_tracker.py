@@ -1,5 +1,15 @@
 from datetime import datetime
-transaksi = []
+import json
+import os
+
+if os.path.exists:
+	try:
+		with open("data.json", 'r') as file:
+			transaksi = json.load(file)
+	except json.JSONDecodeError:
+		transaksi = []
+else:
+	transaksi = []
 
 def tambah_transaksi(transaksi):
 	print("Contoh YY-MM--DD")
@@ -8,13 +18,25 @@ def tambah_transaksi(transaksi):
 	jumlah = int(input("Masukkan jumlah: "))
 	kategori = input("Masukkan kategori: ")
 	catatan = input("Masukkan keterangan: ")
-	transaksi.append(f"({tanggal1}) Rp{jumlah} - {kategori} ({catatan})")
 	print("Transaksi anda berhasil ditambahkan!")
+	
+	data = {
+		"tanggal" : tanggal1,
+		"jumlah" : jumlah,
+		"kategori": kategori,
+		"catatan": catatan,
+		}
+	transaksi.append(data)
+	with open("data.json", "w") as file:
+		json.dump(transaksi, file, indent = 4, default= str)
+
 		
 
 def lihat_transaksi(transaksi):
 	print("==Riwayat transaksi anda==")
-	for index, i in enumerate(transaksi):
+	with open("data.json", "r") as file:
+		data = json.load(file)
+	for index, i in enumerate(data):
 		print(f"{index + 1}. {i}")
 	
 
