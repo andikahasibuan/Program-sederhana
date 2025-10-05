@@ -15,17 +15,17 @@ def tambah_transaksi(transaksi):
 	print("Contoh YY-MM--DD")
 	tanggal =input("Masukkan tanggal:")
 	tanggal1 = datetime.strptime(tanggal, "%Y-%m-%d").date()
-	jumlah = int(input("Masukkan jumlah: "))
+	jumlah = int(input("Masukkan jumlah harga: "))
 	kategori = input("Masukkan kategori: ")
-	catatan = input("Masukkan keterangan: ")
+	catatan = input("Tambahkan catatan: ")
 	print("Transaksi anda berhasil ditambahkan!")
-	
-	data = {
-		"tanggal" : tanggal1,
-		"jumlah" : jumlah,
-		"kategori": kategori,
-		"catatan": catatan,
-		}
+	data = f"({tanggal1}) {jumlah} - {kategori} {catatan}"
+	# data = {
+	# 	"tanggal" : tanggal1,
+	# 	"jumlah" : jumlah,
+	# 	"kategori": kategori,
+	# 	"catatan": catatan,
+	# 	}
 	transaksi.append(data)
 	with open("data.json", "w") as file:
 		json.dump(transaksi, file, indent = 4, default= str)
