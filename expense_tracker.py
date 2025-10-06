@@ -31,6 +31,9 @@ def lihat_transaksi():
 		print("==Riwayat transaksi anda==")
 		with open("data.json", "r") as file:
 			data = json.load(file)
+		if not data:
+			print("Anda belum memiliki riwayat transaksi!")
+			return
 		for index, i in enumerate(data):
 			print(f"{index + 1}. {i}")
 		pilihan = input("Ketik q untuk kembali: ")
@@ -43,9 +46,12 @@ def lihat_transaksi():
 def hapus_transaksi():
 	with open("data.json", "r") as file:
 		data = json.load(file)
+	if not data:
+		print("Anda tidak memiliki data yang bisa di hapus!")
+		return
 	for nomor, i in enumerate(data):
 		print(f"{nomor + 1}. {i}")
-	pilihan = int(input("Silahkan pilih data transaksi mana yang ingin di hapus:  ")) -1
+	pilihan = int(input("Silahkan pilih data transaksi mana yang ingin anda hapus:  ")) -1
 	if pilihan > nomor :
 		print("Data tidak valid!")
 	else:
@@ -71,8 +77,8 @@ while True:
 	main()
 	try:
 		pilihan = int(input("Silahkan pilih: "))
-		if pilihan > 4:
-			print("Nomor tidak valid")
+		if pilihan > 4 or pilihan == 0:
+			print("Nomor tidak valid!")
 		elif pilihan == 1:
 			tambah_transaksi(transaksi)
 		elif pilihan == 2:
