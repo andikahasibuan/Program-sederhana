@@ -17,7 +17,7 @@ def cari_kontak(kontak):
 	ditemukan = False
 	for daftar in kontak:
 		if pilihan in daftar ["Nama"]:
-			print(f"{pilihan} Ada didalam daftar kontak anda!")
+			print(f"{pilihan} Ada dalam daftar kontak anda!")
 			print(f"Nama: {daftar["Nama"]}, Telepon: {daftar["Telepon"]}, Email: {daftar["Email"]}")
 			ditemukan = True
 	if not ditemukan:
@@ -26,14 +26,17 @@ def cari_kontak(kontak):
 def hapus_kontak(kontak):
 	print("==daftar kontak anda==")
 	for index, i in enumerate(kontak):
-		print(f"{index + 1}. {i}")
-	pilihan = int(input("Pilih kontak yang ingin dihapus: ")) -1
-	match pilihan:
-		case _ if pilihan > index:
-			print("Pilihan tidak valid!")
-		case _:
-			kontak.pop(pilihan)
-			print("Kontak berhasil dihapus!")
+		print(f"{index + 1}. Nama: {i["Nama"]}, Telepon: {i["Telepon"]}, Email: {i["Email"]}")
+	try:
+		pilihan = int(input("Pilih kontak yang ingin dihapus: ")) -1
+		match pilihan:
+			case _ if pilihan > index:
+				print("Pilihan tidak valid!")
+			case _:
+				kontak.pop(pilihan)
+				print("Kontak berhasil dihapus!")
+	except ValueError:
+		print("Pilihan anda tidak valid!")
 
 def update_kontak(kontak):
 	for index, i in enumerate(kontak):
@@ -48,8 +51,8 @@ def update_kontak(kontak):
 		pilihan = int(input("Pilih bagian mana yang ingin diupdate: "))
 		match pilihan:
 			case 1:
-				nama_baru = input("Masukkan nama baru: ")
-				kontak[update]["Nama"] = nama_baru.capitalize
+				nama_baru = input("Masukkan nama baru: ").capitalize()
+				kontak[update]["Nama"] = nama_baru
 			case 2:
 				no_hp = int(input("Masukkan no telepon baru: "))
 				kontak[update]["Telepon"]= no_hp
@@ -70,25 +73,28 @@ def main():
 
 while True:
 	main()
-	pilihan = int(input(":"))
-	match pilihan:
-		case _ if pilihan > 6:
-			print("Angka yang anda masukkan tidak valid!")
-		case 1:
-			tambah_kontak(kontak)
-		case 2:
-			lihat_kontak(kontak)
-		case 3:
-			cari_kontak(kontak)
-		case 4:
-			hapus_kontak(kontak)
-		case 5:
-			update_kontak(kontak)
-		case 6:
-			print("Anda keluar dari Contact book")
-			break
-		case _:
-			print("Tidak valid!")
+	try:
+		pilihan = int(input("Silahkan pilih:"))
+		match pilihan:
+			case _ if pilihan > 6:
+				print("Angka yang anda masukkan tidak valid!")
+			case 1:
+				tambah_kontak(kontak)
+			case 2:
+				lihat_kontak(kontak)
+			case 3:
+				cari_kontak(kontak)
+			case 4:
+				hapus_kontak(kontak)
+			case 5:
+				update_kontak(kontak)
+			case 6:
+				print("Anda keluar dari Contact book")
+				break
+			case _:
+				print("Tidak valid!")
+	except ValueError:
+		print("Data yang anda masukkan tidak valid!")
 
 			
 
