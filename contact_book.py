@@ -1,22 +1,16 @@
 kontak = []
 
-
 def tambah_kontak(kontak):
-	pilihan = input("Masukkan nama:")
+	nama = input("Masukkan nama:")
 	telepon = int(input("No hp: "))
 	email = input("Email: ")
-	data = {
-		"Nama" : pilihan,
-		"Telepon" : telepon,
-		"Email" : email
-	}
-	kontak.append(data)
+	kontak.append({"Nama": nama, "Telepon": telepon, "Email": email})
 	print("Kontak berhasil ditambahkan!")
 
-def lihat_kontak():
+def lihat_kontak(kontak):
 	print("==Daftar kontak anda==")
 	for index, daftar in enumerate(kontak):
-		print(f"{index + 1}. {kontak}")
+		print(f"{index + 1}. Nama: {daftar["Nama"]}, Telepon: {daftar["Telepon"]}, Email: {daftar["Email"]}")
 
 def cari_kontak():
 	pass
@@ -33,9 +27,29 @@ def hapus_kontak(kontak):
 			kontak.pop(pilihan)
 			print("Kontak berhasil dihapus!")
 
-
-def update_kontak():
-	pass
+def update_kontak(kontak):
+	for index, i in enumerate(kontak):
+		print(f"{index + 1}. Nama: {i["Nama"]}, Telepon: {i["Telepon"]}, Email: {i["Email"]}")
+	update = int(input("Pilih kontak yang ingin diupdate: ")) -1
+	if update > index:
+		print("Angka yang anda masukkan tidak valid!")
+	else:
+		print("1. Nama")
+		print("2. No hp")
+		print("3. Email")
+		pilihan = int(input("Pilih bagian mana yang ingin diupdate: "))
+		match pilihan:
+			case 1:
+				nama_baru = input("Masukkan nama baru: ")
+				kontak[update]["Nama"] = nama_baru
+			case 2:
+				no_hp = int(input("Masukkan no hp baru: "))
+				kontak[update]["Telepon"]= no_hp
+			case 3:
+				email_baru = input("Masukkan email baru: ")
+				kontak[update]["Email"] = email_baru
+			case _:
+				print("Tidak valid!")
 
 def main():
 	print("==Contact Book==")
@@ -55,13 +69,13 @@ while True:
 		case 1:
 			tambah_kontak(kontak)
 		case 2:
-			lihat_kontak()
+			lihat_kontak(kontak)
 		case 3:
 			cari_kontak()
 		case 4:
 			hapus_kontak(kontak)
 		case 5:
-			update_kontak()
+			update_kontak(kontak)
 		case 6:
 			print("Anda keluar dari Contact book")
 			break
