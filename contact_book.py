@@ -1,4 +1,12 @@
-kontak = []
+import json
+import os
+
+if os.path.exists:
+	try:
+		with open("contact.json", "r") as file:
+			kontak = json.load(file)
+	except json.JSONDecodeError:
+		kontak = []
 
 def tambah_kontak(kontak):
 	nama = input("Masukkan nama:").capitalize()
@@ -6,13 +14,21 @@ def tambah_kontak(kontak):
 	email = input("Email: ")
 	kontak.append({"Nama": nama, "Telepon": telepon, "Email": email})
 	print("Kontak berhasil ditambahkan!")
+	with open ("contact.json", "w") as file:
+		kontak = json.dump(kontak, file, indent= 4)
 
 def lihat_kontak(kontak):
+	if not kontak:
+		print("Anda belum memiliki kontak tersimpan!")
+		return
 	print("==Daftar kontak anda==")
 	for index, daftar in enumerate(kontak):
 		print(f"{index + 1}. Nama: {daftar["Nama"]}, Telepon: {daftar["Telepon"]}, Email: {daftar["Email"]}")
 
 def cari_kontak(kontak):
+	if not kontak:
+		print("Anda belum memiliki kontak tersimpan!")
+		return
 	pilihan = input("Cari  berdasarkan nama: ").capitalize()
 	ditemukan = False
 	for daftar in kontak:
@@ -24,6 +40,9 @@ def cari_kontak(kontak):
 		print(f"{pilihan} tidak ada dalam daftar kontak anda!")
 
 def hapus_kontak(kontak):
+	if not kontak:
+		print("Anda tidak memiliki kontak yang bisa dihapus!")
+		return
 	print("==daftar kontak anda==")
 	for index, i in enumerate(kontak):
 		print(f"{index + 1}. Nama: {i["Nama"]}, Telepon: {i["Telepon"]}, Email: {i["Email"]}")
@@ -33,12 +52,17 @@ def hapus_kontak(kontak):
 			case _ if pilihan > index:
 				print("Pilihan tidak valid!")
 			case _:
-				kontak.pop(pilihan)
-				print("Kontak berhasil dihapus!")
+				kontak_hapus = kontak.pop(pilihan)
+				print(f"{kontak_hapus["Nama"]} berhasil dihapus dari daftar kontak anda!")
 	except ValueError:
 		print("Pilihan anda tidak valid!")
+	with open("contact.json", "w") as file:
+		kontak = json.dump(kontak, file, indent= 4)
 
 def update_kontak(kontak):
+	if not kontak:
+		print("Anda belum memiliki kontak tersimpan!")
+		return
 	for index, i in enumerate(kontak):
 		print(f"{index + 1}. Nama: {i["Nama"]}, Telepon: {i["Telepon"]}, Email: {i["Email"]}")
 	update = int(input("Pilih kontak yang ingin diupdate: ")) -1
@@ -62,6 +86,9 @@ def update_kontak(kontak):
 			case _:
 				print("Tidak valid!")
 	print("Kontak berhasil diupdate!")
+	with open("contact.json", "w") as file:
+		kontak =  json.dump(kontak, file, indent= 4)
+
 def main():
 	print("==Contact Book==")
 	print("1. Tambah Kontak")
@@ -89,7 +116,7 @@ while True:
 			case 5:
 				update_kontak(kontak)
 			case 6:
-				print("Anda keluar dari Contact book")
+				print("Anda keluar dari Contact book!")
 				break
 			case _:
 				print("Tidak valid!")
